@@ -10,7 +10,7 @@ clear;
 warning off;
 format long g;
 
-path(path,'eg2_4Var');
+path(path,'eg2_var4');
 
 % Population
 load('pop_4Var.mat');
