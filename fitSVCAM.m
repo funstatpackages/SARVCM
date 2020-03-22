@@ -1,6 +1,14 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Project: Spatial Autoregressive Partially Linear Varying Coefficient
+% Model (SAR-CVM)
+% Author: GuanNan Wang, JingRu Mu & Lily Wang
+% Function: Model Fitting for SARVCM
+% Date: 12/2019
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 function [theta_l gamma beta alpha_hat...
     Ystar_hat Yhat mse mle_max aic bic]=...
     fitSVCAM(X_l,X_nl,Y,Wg,B,Q2,K,lambda,penalty)
+
 n=length(Y);
 n_l=size(X_l,2);
 n_nl=size(X_nl,2);
@@ -130,7 +138,7 @@ end;
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Step 2. Second Round Selection
-alpha_hat0=alpha_init(ind_alpha)
+alpha_hat0=alpha_init(ind_alpha);
 st=alpha_hat0-0.09;
 ed=alpha_hat0+0.09;
 alpha_init=[st:0.01:ed];
@@ -199,7 +207,7 @@ else
 end;
 
 % Step 3. Final Fitting
-alpha_hat=alpha_init(ind_alpha)
+alpha_hat=alpha_init(ind_alpha);
 lam_c=lambda(ind_lam);
 Ystar=Ystar_all(:,ind_alpha);
 Ahat=eye(n)-alpha_hat*Wg;
